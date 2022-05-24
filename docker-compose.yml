@@ -1,0 +1,25 @@
+version: '2'
+services:
+  app:
+    build:
+      dockerfile: Dockerfile
+      context: ./
+    ports:
+      - "8081:8081"
+    environment:
+      DATABASE: "database:5432"
+      DATASOURCE_URL: "jdbc:postgresql://database:5432/primes"
+      DB_USERNAME: "username"
+      DB_PASSWORD: "password"
+
+  database:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: "password"
+      POSTGRES_USER: "username"
+      POSTGRES_DB: "primes"
+      PGPASSWORD: "password"
+      PGUSER: "username"
+      PGDATABASE: "primes"

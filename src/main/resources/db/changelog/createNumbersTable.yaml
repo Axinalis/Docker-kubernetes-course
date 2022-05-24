@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - logicalFilePath: db.changelog-master.yaml
+  - changeSet:
+      id: 1
+      author: axinalis
+      labels: "CreateNumbersTable"
+      comment: "Create table of numbers"
+      changes:
+        - createTable:
+            tableName: numbers
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: value
+                  type: bigint
+                  constraints:
+                    nullable: false
