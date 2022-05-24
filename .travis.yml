@@ -3,12 +3,13 @@ services:
   - docker
 
 before_install:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build -t axinalis/learning-kuber-test -f ./DockerfileTests .
 
 script:
   - docker run axinalis/learning-kuber-test
 
 after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build -t axinalis/learning-kuber .
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push axinalis/learning-kuber:latest
