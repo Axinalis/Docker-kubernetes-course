@@ -9,6 +9,6 @@ script:
   - docker run axinalis/learning-kuber-test
 
 after_success:
-  - docker build -t axinalis/learning-kuber -f ./Dockerfile .
+  - docker build -t axinalis/learning-kuber .
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push axinalis/learning-kuber:latest
