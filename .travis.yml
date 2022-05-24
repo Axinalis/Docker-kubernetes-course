@@ -3,6 +3,7 @@ services:
   - docker
 
 before_install:
+  - curl https://registry-1.docker.io/v2/ && echo Works || echo Problem
   - docker build -t axinalis/learning-kuber-test -f ./DockerfileTests .
 
 script:
