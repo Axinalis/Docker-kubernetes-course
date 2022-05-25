@@ -13,3 +13,16 @@ after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build -t axinalis/learning-kuber .
   - docker push axinalis/learning-kuber:latest
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-1
+  app: DockerAnKuber
+  env: Dockerandkuber-env
+  bucket_name: elasticbeanstalk-us-east-1-997496945967
+  bucket_path: DockerAndKuber
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY

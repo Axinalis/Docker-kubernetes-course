@@ -1,0 +1,28 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "learningKuber",
+      "image": "axinalis/learning-kuber",
+      "hostname": "app",
+      "essential": true,
+      "portMappings": [
+        {
+          "hostPort": 8081,
+          "containerPort": 8081
+        }
+      ],
+      "links": [
+        "database"
+      ],
+      "memory": 128
+    },
+    {
+      "name": "postgresDatabase",
+      "image": "postgres:latest",
+      "hostname": "database",
+      "essential": false,
+      "memory": 128
+    }
+  ]
+}

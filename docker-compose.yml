@@ -7,19 +7,18 @@ services:
     ports:
       - "8081:8081"
     environment:
-      DATABASE: "database:5432"
       DATASOURCE_URL: "jdbc:postgresql://database:5432/primes"
-      DB_USERNAME: "username"
-      DB_PASSWORD: "password"
+      DB_USERNAME: "postgres"
+      DB_PASSWORD: "fetu22AB"
 
   database:
     image: postgres:latest
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_PASSWORD: "password"
-      POSTGRES_USER: "username"
+      POSTGRES_PASSWORD: "fetu22AB"
+      POSTGRES_USER: "postgres"
       POSTGRES_DB: "primes"
-      PGPASSWORD: "password"
-      PGUSER: "username"
+      PGPASSWORD: "fetu22AB"
+      PGUSER: "postgres"
       PGDATABASE: "primes"
