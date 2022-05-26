@@ -19,8 +19,7 @@ deploy:
   region: us-east-1
   app: DockerAnKuber
   env: Dockerandkuber-env
-  bucket_name: elasticbeanstalk-us-east-1-997496945967
-  bucket_path: DockerAndKuber
+  bucket: elasticbeanstalk-us-east-1-997496945967
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY

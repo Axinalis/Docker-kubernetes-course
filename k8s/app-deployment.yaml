@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      component: web
+  template:
+    metadata:
+      labels:
+        component: web
+    spec:
+      containers:
+        - name: app
+          image: axinalis/learning-kuber
+          ports:
+            - containerPort: 8081
+          env:
+            - name: "DATASOURCE_URL"
+              value: "jdbc:postgresql://database-cluster-ip:5432/primes"
+            - name: "DB_USERNAME"
+              value: "postgres"
+            - name: "DB_PASSWORD"
+              valueFrom:
+                secretKeyRef:
+                  name: pgpassword
+                  key: PGPASSWORD
